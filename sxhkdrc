@@ -1,0 +1,60 @@
+
+#workspaces
+super + {1,2,3,4}
+	wmctrl -s {0,1,2,3}
+
+#move focused window to selected workspace
+super + shift + {1,2,3,4}
+	wmctrl -r :ACTIVE: -t {0,1,2,3}
+
+#switch window focus
+super + {Up,Down,Left,Right}
+	bspc node -f {north,south,west,east}.local
+
+#swap current window with biggest
+super + m
+	bspc node --swap biggest.local
+
+#automatic screenshot
+Print
+	scrot '%s.png' -e 'mv $f ~/Pictures'
+
+#open application menu
+#{Super_L,Super_R}
+#	xfce4-popup-whiskermenu
+
+# terminal emulator
+super + {e,t}
+	xfce4-terminal --hide-menubar
+
+# close window
+ctrl + q
+	bspc node --close
+super + {w,q}
+	bspc node --close
+
+#cycle through desktops (scroll up/down)
+super + {button5,button4}
+	bspc desktop -f {next,prev}.local
+
+# windows style alt tab
+alt + {_,shift +} Tab
+	bspc node -f {next,prev}.local
+
+# program launcher
+super + space
+	rofi -show drun -modi drun
+
+#web search
+super + Return
+	bash ~/.config/sxhkd/search.sh
+
+# make sxhkd reload its configuration files:
+super + F5
+	pkill -USR1 -x sxhkd
+
+# toggle fullscreen
+super + f
+	bspc node --state ~fullscreen
+
+

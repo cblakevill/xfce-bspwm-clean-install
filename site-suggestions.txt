@@ -1,0 +1,5 @@
+google.com
+youtube.com
+twitch.tv
+github.com
+reddit.com
