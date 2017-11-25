@@ -1,6 +1,6 @@
 #!/bin/bash
 
-query=$(cat site-suggestions.txt | rofi -dmenu)
+query=$(cat ~/.config/sxhkd/site-suggestions.txt | rofi -dmenu)
 if [ $query != "" ]; then
 	if [[ $query =~ .*\..* ]]; then
 		firefox -new-tab $query
